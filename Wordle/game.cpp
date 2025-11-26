@@ -161,7 +161,7 @@ bool is_letter_state_higher_priority(Letter_State a, Letter_State b)
 
 void update_letter_state_map(std::unordered_map<char, Letter_State>& letter_state_map, const std::string& guess, const std::vector<Letter_State>& guess_letter_states)
 {
-    for (int i = 0; i < guess.size(); i++) {
+    for (int i = 0; i < 5; i++) {
         char c = guess[i];
         Letter_State m = guess_letter_states[i];
 
@@ -173,8 +173,7 @@ void update_letter_state_map(std::unordered_map<char, Letter_State>& letter_stat
 
 std::vector<Letter_State> evaluate_guess(const std::string& secret_word, const std::string& guess) 
 {
-    const int N = secret_word.size();
-    std::vector<Letter_State> result(N, Letter_State::Gray);
+    std::vector<Letter_State> result(5, Letter_State::Gray);
     std::unordered_map<char, int> freq;
 
     for (char c : secret_word) {
@@ -182,7 +181,7 @@ std::vector<Letter_State> evaluate_guess(const std::string& secret_word, const s
     }
 
     // mark greens
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < 5; i++) {
         if (guess[i] == secret_word[i]) {
             result[i] = Letter_State::Green;
             freq[guess[i]]--;
@@ -190,7 +189,7 @@ std::vector<Letter_State> evaluate_guess(const std::string& secret_word, const s
     }
 
     // mark yellows
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < 5; i++) {
         if (result[i] == Letter_State::Green) continue;
 
         char g = guess[i];
