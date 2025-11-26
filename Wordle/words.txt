@@ -41,18 +41,21 @@ aimed
 aired
 aisle
 alarm
+album
 alert
 alias
 alien
 alike
 allay
 allot
+allow
 alloy
 aloft
 alone
 aloof
 aloud
 alpha
+alter
 amaze
 amber
 amend
@@ -128,6 +131,7 @@ based
 basic
 basil
 basin
+basis
 batch
 bates
 baths
@@ -150,6 +154,7 @@ beers
 began
 begin
 begot
+begun
 beige
 belch
 belle
@@ -240,7 +245,6 @@ brawl
 bread
 breed
 bribe
-bridge
 bring
 brisk
 broad
@@ -580,6 +584,7 @@ farms
 fatal
 fated
 fatty
+fault
 favor
 fazed
 fears
@@ -1087,6 +1092,7 @@ marry
 marsh
 masks
 mason
+match
 mates
 mauls
 maxim
@@ -1196,6 +1202,7 @@ nosey
 noted
 notes
 nouns
+novel
 nudge
 nuked
 nurse
@@ -1267,6 +1274,9 @@ peril
 perky
 pests
 petal
+peter
+phase
+phone
 photo
 piano
 picky
@@ -1363,6 +1373,7 @@ raved
 raven
 razer
 razor
+reach
 react
 ready
 realm
@@ -1409,6 +1420,7 @@ river
 roads
 roars
 roast
+robin
 robot
 rocks
 rocky
@@ -1495,7 +1507,9 @@ shake
 shall
 shame
 shape
+share
 shark
+sheet
 shelf
 shell
 shift
@@ -1511,6 +1525,7 @@ shout
 shred
 shrug
 sided
+sight
 silky
 silly
 since
@@ -1609,6 +1624,7 @@ steps
 stich
 stick
 stiff
+still
 sting
 stink
 stint
@@ -1656,6 +1672,7 @@ talk
 talon
 tango
 tardy
+tarry
 taste
 tasty
 taxed
@@ -1665,6 +1682,7 @@ tease
 teeth
 tenet
 tenth
+terry
 tests
 thank
 theft
@@ -1725,6 +1743,7 @@ truce
 truck
 truly
 trunk
+trust
 truth
 tulip
 tummy
@@ -1867,6 +1886,7 @@ yield
 yikes
 young
 yours
+youth
 yucky
 yummy
 yuppy
