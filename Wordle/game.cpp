@@ -20,8 +20,8 @@ void import_words(std::vector<std::string>& all_possible_words)
     std::string line;
     while (std::getline(file, line)) {
         if (!line.empty()) {
-            std::transform(line.begin(), line.end(), line.begin(),
-                [](unsigned char c) { return std::toupper(c); });
+            //std::transform(line.begin(), line.end(), line.begin(),
+            //    [](unsigned char c) { return std::toupper(c); });
             all_possible_words.push_back(line);
         }
     }

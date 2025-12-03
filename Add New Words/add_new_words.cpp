@@ -73,6 +73,8 @@ int main() {
             continue;
         }
 
+        std::transform(new_word.begin(), new_word.end(), new_word.begin(), [](unsigned char c) { return std::toupper(c); });
+
         if (insert_word_sorted(words, new_word)) {
             write_file(file_path.string(), words);
             std::cout << "Word inserted and file updated!" << std::endl;
