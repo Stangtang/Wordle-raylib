@@ -64,7 +64,7 @@ void initialize_wordle_game(char(&input)[6])
     std::cout << "The random wordle word is: " + wordle_word << '\n';
 }
 
-bool handle_input()
+bool handle_input(int clicked_letter)
 {
     if (is_wordle_word_guessed) {
         return true;
@@ -75,6 +75,11 @@ bool handle_input()
     }
 
     int input_key = GetKeyPressed();
+
+    if (clicked_letter != KEY_NULL) { // letter was clicked
+        input_key = clicked_letter;
+    }
+
     if (input_key >= KEY_A && input_key <= KEY_Z) {
         if (current_input_position == 5) { // already inputted 5 letters
             std::cout << "INVALID LETTER INPUT: already inputted 5 letters\n";

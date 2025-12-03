@@ -21,7 +21,7 @@ void initialize_input(char(&input)[6]);
 void initialize_wordle_game(char(&input)[6]);
 void import_words(std::vector<std::string>& words);
 std::string pick_random_word(const std::vector<std::string>& all_possible_words);
-bool handle_input();
+bool handle_input(int clicked_letter);
 extern std::unordered_map<char, Letter_State> wordle_letter_state_map;
 extern std::unordered_map<std::uint8_t, std::vector<Letter_State>> wordle_guess_number_letter_state_map;
 std::vector<Letter_State> evaluate_guess(const std::string& secret, const std::string& guess);

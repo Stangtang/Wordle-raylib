@@ -47,7 +47,7 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 		}
 	}
 
-	// draw keyboard
+	// draw keyboard and get click input from keyboard
 
 	const int gap_between_squares_and_letters = 60;
 	const int letter_box_height = 60;
@@ -86,6 +86,8 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 	const int letters_font_size = 36;
 	const int enter_and_backspace_font_size = 20;
 
+	int clicked_letter = KEY_NULL;
+
 	const std::string row_1_letters = "QWERTYUIOP";
 	for (int i = 0; i < row_1_letters.length(); i++) {
 		DrawRectangle(rows_1_and_3_padding_from_edge + letter_box_line_thickness + i * row_1_letter_box_width + i * gap_between_letter_boxes,
@@ -99,6 +101,16 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 			rows_1_and_3_padding_from_edge + (row_1_letter_box_width - MeasureText(s.c_str(), letters_font_size)) / 2 + i * row_1_letter_box_width + i * gap_between_letter_boxes,
 			first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters + (letter_box_height - letters_font_size) / 2,
 			letters_font_size, BLACK);
+
+		Rectangle letter_button_area = { float(rows_1_and_3_padding_from_edge + i * row_1_letter_box_width + i * gap_between_letter_boxes),
+										 first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters,
+										 row_1_letter_box_width, letter_box_height };
+
+		Vector2 mouse_position = GetMousePosition();
+		if (CheckCollisionPointRec(mouse_position, letter_button_area) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+			std::cout << "letter clicked: " << row_1_letters[i] << '\n';
+			clicked_letter = row_1_letters[i];
+		}
 	}
 
 	const std::string row_2_letters = "ASDFGHJKL";
@@ -114,6 +126,16 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 			row_2_padding_from_edge + (row_2_letter_box_width - MeasureText(s.c_str(), letters_font_size)) / 2 + i * row_2_letter_box_width + i * gap_between_letter_boxes,
 			first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters + (letter_box_height - letters_font_size) / 2 + letter_box_height + gap_between_letter_boxes,
 			letters_font_size, BLACK);
+
+		Rectangle letter_button_area = { float(row_2_padding_from_edge + i * row_2_letter_box_width + i * gap_between_letter_boxes),
+										 first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters + letter_box_height + gap_between_letter_boxes,
+										 row_2_letter_box_width, letter_box_height };
+
+		Vector2 mouse_position = GetMousePosition();
+		if (CheckCollisionPointRec(mouse_position, letter_button_area) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+			std::cout << "letter clicked: " << row_2_letters[i] << '\n';
+			clicked_letter = row_2_letters[i];
+		}
 	}
 
 	const std::string row_3_letters = "ZXCVBNM";
@@ -129,7 +151,19 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 			rows_1_and_3_padding_from_edge + (row_3_letter_box_width - MeasureText(s.c_str(), letters_font_size)) / 2 + i * row_3_letter_box_width + i * gap_between_letter_boxes + row_3_letter_box_width + gap_between_letter_boxes,
 			first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters + (letter_box_height - letters_font_size) / 2 + 2 * letter_box_height + 2 * gap_between_letter_boxes,
 			letters_font_size, BLACK);
+
+		Rectangle letter_button_area = { float(rows_1_and_3_padding_from_edge + i * row_3_letter_box_width + i * gap_between_letter_boxes + row_3_letter_box_width + gap_between_letter_boxes),
+										 first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters + 2 * letter_box_height + 2 * gap_between_letter_boxes,
+										 row_3_letter_box_width, letter_box_height };
+		
+		Vector2 mouse_position = GetMousePosition();
+		if (CheckCollisionPointRec(mouse_position, letter_button_area) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+			std::cout << "letter clicked: " << row_3_letters[i] << '\n';
+			clicked_letter = row_3_letters[i];
+		}
 	}
+
+	Vector2 mouse_position = GetMousePosition();
 
 	const char* enter_box_text = "Entr";
 	DrawRectangle(rows_1_and_3_padding_from_edge + letter_box_line_thickness + 0 * row_3_letter_box_width + 0 * gap_between_letter_boxes,
@@ -139,6 +173,13 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 		rows_1_and_3_padding_from_edge + (row_3_letter_box_width - MeasureText(enter_box_text, enter_and_backspace_font_size)) / 2 + 0 * row_3_letter_box_width + 0 * gap_between_letter_boxes,
 		first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters + (letter_box_height - enter_and_backspace_font_size) / 2 + 2 * letter_box_height + 2 * gap_between_letter_boxes,
 		enter_and_backspace_font_size, BLACK);
+	Rectangle enter_button_area = { rows_1_and_3_padding_from_edge,
+									first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters + 2 * letter_box_height + 2 * gap_between_letter_boxes,
+									row_3_letter_box_width, letter_box_height };
+	if (CheckCollisionPointRec(mouse_position, enter_button_area) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		std::cout << "button clicked: " << "Enter" << '\n';
+		clicked_letter = KEY_ENTER;
+	}
 
 	const char* backspace_box_text = "Bksp";
 	DrawRectangle(rows_1_and_3_padding_from_edge + letter_box_line_thickness + 8 * row_3_letter_box_width + 8 * gap_between_letter_boxes,
@@ -148,10 +189,17 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 		rows_1_and_3_padding_from_edge + (row_3_letter_box_width - MeasureText(backspace_box_text, enter_and_backspace_font_size)) / 2 + 8 * row_3_letter_box_width + 8 * gap_between_letter_boxes,
 		first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters + (letter_box_height - enter_and_backspace_font_size) / 2 + 2 * letter_box_height + 2 * gap_between_letter_boxes,
 		enter_and_backspace_font_size, BLACK);
+	Rectangle backspace_button_area = { rows_1_and_3_padding_from_edge + row_3_letter_box_width + gap_between_letter_boxes + row_3_letters.length() * row_3_letter_box_width + row_3_letters.length() * gap_between_letter_boxes,
+										first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters + 2 * letter_box_height + 2 * gap_between_letter_boxes,
+										row_3_letter_box_width, letter_box_height };
+	if (CheckCollisionPointRec(mouse_position, backspace_button_area) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		std::cout << "button clicked: " << "Backspace" << '\n';
+		clicked_letter = KEY_BACKSPACE;
+	}
 
 	// handle input and invalid input text
 
-	bool is_input_invalid = !handle_input();
+	bool is_input_invalid = !handle_input(clicked_letter);
 
 	const int bottom_text_font_size = 70;
 	const int space_before_bottom_text = 15;
