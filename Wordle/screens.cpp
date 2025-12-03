@@ -86,7 +86,7 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 	const int letters_font_size = 36;
 	const int enter_and_backspace_font_size = 20;
 
-	int clicked_letter = KEY_NULL;
+	int clicked_button = KEY_NULL;
 
 	const std::string row_1_letters = "QWERTYUIOP";
 	for (int i = 0; i < row_1_letters.length(); i++) {
@@ -109,7 +109,7 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 		Vector2 mouse_position = GetMousePosition();
 		if (CheckCollisionPointRec(mouse_position, letter_button_area) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 			std::cout << "letter clicked: " << row_1_letters[i] << '\n';
-			clicked_letter = row_1_letters[i];
+			clicked_button = row_1_letters[i];
 		}
 	}
 
@@ -134,7 +134,7 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 		Vector2 mouse_position = GetMousePosition();
 		if (CheckCollisionPointRec(mouse_position, letter_button_area) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 			std::cout << "letter clicked: " << row_2_letters[i] << '\n';
-			clicked_letter = row_2_letters[i];
+			clicked_button = row_2_letters[i];
 		}
 	}
 
@@ -159,7 +159,7 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 		Vector2 mouse_position = GetMousePosition();
 		if (CheckCollisionPointRec(mouse_position, letter_button_area) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 			std::cout << "letter clicked: " << row_3_letters[i] << '\n';
-			clicked_letter = row_3_letters[i];
+			clicked_button = row_3_letters[i];
 		}
 	}
 
@@ -178,7 +178,7 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 									row_3_letter_box_width, letter_box_height };
 	if (CheckCollisionPointRec(mouse_position, enter_button_area) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		std::cout << "button clicked: " << "Enter" << '\n';
-		clicked_letter = KEY_ENTER;
+		clicked_button = KEY_ENTER;
 	}
 
 	const char* backspace_box_text = "Bksp";
@@ -194,12 +194,12 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 										row_3_letter_box_width, letter_box_height };
 	if (CheckCollisionPointRec(mouse_position, backspace_button_area) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		std::cout << "button clicked: " << "Backspace" << '\n';
-		clicked_letter = KEY_BACKSPACE;
+		clicked_button = KEY_BACKSPACE;
 	}
 
 	// handle input and invalid input text
 
-	bool is_input_invalid = !handle_input(clicked_letter);
+	bool is_input_invalid = !handle_input(clicked_button);
 
 	const int bottom_text_font_size = 70;
 	const int space_before_bottom_text = 15;
