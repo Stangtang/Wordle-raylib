@@ -326,4 +326,6 @@ void start_screen(std::stack<Screen>& screen_stack)
 	DrawText(button_1_text, (screen_width - button_1_text_width) / 2, first_button_offset + (button_height - font_size) / 2 + 0 * button_height + 0 * gap_between_buttons, font_size, BLACK);
 	DrawText(button_2_text, (screen_width - button_2_text_width) / 2, first_button_offset + (button_height - font_size) / 2 + 1 * button_height + 1 * gap_between_buttons, font_size, BLACK);
 	DrawText(button_3_text, (screen_width - button_3_text_width) / 2, first_button_offset + (button_height - font_size) / 2 + 2 * button_height + 2 * gap_between_buttons, font_size, BLACK);
+
+	DrawText("Duordle and Quordle not implemented yet", 10, 500, 25, BLUE);
 }
