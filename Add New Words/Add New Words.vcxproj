@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="add_new_words.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="add_new_words.exe" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
