@@ -46,6 +46,23 @@ bool insert_word_sorted(std::vector<std::string>& words, const std::string& new_
     return true;
 }
 
+bool verify_file_contents(const std::vector<std::string>& words) {
+    for (std::string word : words) {
+        if (word.length() != 5) {
+            std::cout << "Invalid word length for word: " << word << std::endl;
+            return false;
+        }
+
+        for (char c : word) {
+            if (!('A' <= c && 'Z' >= c)) {
+                std::cout << "Invalid character '" << c << "' in word: " << word << std::endl;
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 int main() {
     std::filesystem::path file_path = std::filesystem::current_path();
     file_path = file_path.parent_path() / "Wordle" / "words.txt";   // navigate to words.txt
@@ -54,6 +71,10 @@ int main() {
 
     if (!read_file(file_path.string(), words)) {
         return 1;
+    }
+
+    if (!verify_file_contents(words)) {
+        std::cout << "Errors found with file contents!\n";
     }
 
     std::string new_word;
