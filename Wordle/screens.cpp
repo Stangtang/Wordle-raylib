@@ -14,8 +14,8 @@ Color get_color_of_state(Letter_State state)
 	switch (state)
 	{
 	case Letter_State::Gray: return GRAY;
-	case Letter_State::Yellow: return YELLOW;
-	case Letter_State::Green: return GREEN;
+	case Letter_State::Yellow: return { 230, 210, 37, 255 };
+	case Letter_State::Green: return { 75, 217, 65, 255 };
 	case Letter_State::Unchecked: return LIGHTGRAY;
 	}
 }
@@ -274,7 +274,7 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 		DrawText(win_text,
 			(screen_width - MeasureText(win_text, bottom_text_font_size)) / 2,
 			first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters + letter_box_line_thickness + 3 * letter_box_height + 3 * gap_between_letter_boxes + space_before_bottom_text,
-			bottom_text_font_size, YELLOW);
+			bottom_text_font_size, ORANGE);
 
 		DrawText(exit_text,
 			(screen_width - MeasureText(exit_text, exit_text_font_size)) / 2,
@@ -294,7 +294,7 @@ void wordle_screen(std::stack<Screen>& screen_stack)
 		DrawText(lose_text.c_str(),
 			(screen_width - MeasureText(lose_text.c_str(), lose_text_font_size)) / 2,
 			first_square_offset + 6 * gap_between_squares + 6 * guess_square_length + gap_between_squares_and_letters + letter_box_line_thickness + 3 * letter_box_height + 3 * gap_between_letter_boxes + space_before_bottom_text + (bottom_text_font_size - lose_text_font_size) / 2,
-			lose_text_font_size, ORANGE);
+			lose_text_font_size, BLUE);
 
 		DrawText(exit_text,
 			(screen_width - MeasureText(exit_text, exit_text_font_size)) / 2,
