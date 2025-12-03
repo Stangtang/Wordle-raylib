@@ -8,7 +8,7 @@
 bool read_file(const std::string& file_name, std::vector<std::string>& words) {
     std::ifstream file(file_name);
     if (!file.is_open()) {
-        std::cerr << "Error opening file!" << std::endl;
+        std::cerr << "Error opening file!\n";
         return false;
     }
 
@@ -24,12 +24,12 @@ bool read_file(const std::string& file_name, std::vector<std::string>& words) {
 void write_file(const std::string& file_name, const std::vector<std::string>& words) {
     std::ofstream file(file_name);
     if (!file.is_open()) {
-        std::cerr << "Error opening file!" << std::endl;
+        std::cerr << "Error opening file!\n";
         return;
     }
 
     for (const auto& word : words) {
-        file << word << std::endl;
+        file << word << '\n';
     }
 
     file.close();
@@ -37,7 +37,7 @@ void write_file(const std::string& file_name, const std::vector<std::string>& wo
 
 bool insert_word_sorted(std::vector<std::string>& words, const std::string& new_word) {
     if (std::find(words.begin(), words.end(), new_word) != words.end()) {
-        std::cout << "The word \"" << new_word << "\" already exists in the list!" << std::endl;
+        std::cout << "The word \"" << new_word << "\" already exists in the list!\n";
         return false;
     }
 
@@ -49,13 +49,13 @@ bool insert_word_sorted(std::vector<std::string>& words, const std::string& new_
 bool verify_file_contents(const std::vector<std::string>& words) {
     for (std::string word : words) {
         if (word.length() != 5) {
-            std::cout << "Invalid word length for word: " << word << std::endl;
+            std::cout << "Invalid word length for word: " << word << '\n';
             return false;
         }
 
         for (char c : word) {
             if (!('A' <= c && 'Z' >= c)) {
-                std::cout << "Invalid character '" << c << "' in word: " << word << std::endl;
+                std::cout << "Invalid character '" << c << "' in word: " << word << '\n';
                 return false;
             }
         }
@@ -65,7 +65,7 @@ bool verify_file_contents(const std::vector<std::string>& words) {
 
 int main() {
     std::filesystem::path file_path = std::filesystem::current_path();
-    file_path = file_path.parent_path() / "Wordle" / "words.txt";   // navigate to words.txt
+    file_path = file_path.parent_path() / "Wordle" / "words.txt"; // navigate to words.txt
 
     std::vector<std::string> words;
 
@@ -78,19 +78,19 @@ int main() {
     }
 
     std::string new_word;
-    std::cout << "Enter 5-letter words to insert (type 'quit' to stop):" << std::endl;
+    std::cout << "Enter 5-letter words to insert (type 'quit' to stop):\n";
 
     while (true) {
         std::cout << "Enter a 5-letter word (or 'quit' to stop): ";
         std::cin >> new_word;
 
         if (new_word == "quit") {
-            //std::cout << "Exiting..." << std::endl;
+            //std::cout << "Exiting...\n";
             break;
         }
 
         if (new_word.length() != 5) {
-            std::cout << "Invalid input! Please enter a 5-letter word." << std::endl;
+            std::cout << "Invalid input! Please enter a 5-letter word.\n";
             continue;
         }
 
@@ -98,7 +98,7 @@ int main() {
 
         if (insert_word_sorted(words, new_word)) {
             write_file(file_path.string(), words);
-            std::cout << "Word inserted and file updated!" << std::endl;
+            std::cout << "Word inserted and file updated!\n";
         }
     }
 
