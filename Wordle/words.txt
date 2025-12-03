@@ -318,6 +318,7 @@ chick
 chief
 child
 chime
+china
 chips
 chirp
 chive
@@ -617,6 +618,7 @@ fined
 fired
 fires
 first
+firth
 fishy
 fists
 fitch
@@ -635,6 +637,7 @@ flare
 flash
 flask
 flats
+flawn
 fleas
 fleet
 flesh
@@ -683,6 +686,7 @@ fresh
 fried
 fries
 frisk
+frith
 frock
 frogs
 front
@@ -735,6 +739,7 @@ glare
 glass
 glaze
 glean
+gleet
 glide
 gloat
 globe
@@ -806,6 +811,7 @@ gusts
 gutsy
 habit
 hacks
+hairs
 hairy
 halls
 halve
@@ -908,6 +914,7 @@ jaded
 jades
 jails
 janky
+japan
 jaunt
 jeans
 jeers
@@ -916,6 +923,7 @@ jerks
 jerky
 jests
 jewel
+jibba
 jiffy
 jiggy
 jinks
@@ -963,6 +971,7 @@ knock
 known
 knows
 knubs
+knurl
 koala
 kooks
 kraft
@@ -1345,6 +1354,7 @@ quilt
 quirk
 quite
 quits
+quoin
 quota
 quote
 rabid
@@ -1476,6 +1486,7 @@ scams
 scare
 scarf
 scary
+scaur
 scene
 scent
 scoff
@@ -1561,6 +1572,7 @@ slush
 small
 smart
 smash
+smaze
 smear
 smell
 smelt
@@ -1674,6 +1686,7 @@ talon
 tango
 tardy
 tarry
+tasse
 taste
 tasty
 taxed
@@ -1734,8 +1747,10 @@ trade
 train
 trait
 tramp
+trams
 trash
 tread
+trees
 trend
 trial
 trick
@@ -1875,6 +1890,7 @@ wrist
 write
 wrong
 wrote
+wroth
 xenon
 yacht
 yahoo
