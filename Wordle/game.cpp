@@ -4,41 +4,48 @@ char input[6];
 std::uint8_t current_input_position;
 std::vector<std::string> guesses_used;
 std::string wordle_word;
-std::vector<std::string> all_possible_words;
+std::vector<std::string> all_possible_random_words;
+std::vector<std::string> all_possible_guess_words;
 std::unordered_map<char, Letter_State> wordle_letter_state_map;
 std::unordered_map<std::uint8_t, std::vector<Letter_State>> wordle_guess_number_letter_state_map;
 bool is_wordle_word_guessed;
 
-void import_words(std::vector<std::string>& all_possible_words)
+void import_words(std::vector<std::string>& all_possible_random_words, std::vector<std::string>& all_possible_guess_words)
 {
-    std::ifstream file("words.txt");
-    if (!file.is_open()) {
+    std::ifstream all_possible_random_words_file("words/random_word_word_bank.txt");
+    if (!all_possible_random_words_file.is_open()) {
+        std::cerr << "Error: Could not open file.\n";
+        return;
+    }
+
+    std::ifstream all_possible_guess_words_file("words/possible_guess_word_word_bank.txt");
+    if (!all_possible_guess_words_file.is_open()) {
         std::cerr << "Error: Could not open file.\n";
         return;
     }
 
     std::string line;
-    while (std::getline(file, line)) {
+    while (std::getline(all_possible_random_words_file, line)) {
         if (!line.empty()) {
-            //std::transform(line.begin(), line.end(), line.begin(),
-            //    [](unsigned char c) { return std::toupper(c); });
-            all_possible_words.push_back(line);
+            all_possible_random_words.push_back(line);
         }
     }
 
-    std::cout << "Imported Words:\n";
-    for (std::string word : all_possible_words) {
-        std::cout << word << '\n';
+    while (std::getline(all_possible_guess_words_file, line)) {
+        if (!line.empty()) {
+            all_possible_guess_words.push_back(line);
+        }
     }
 
-    file.close();
+    all_possible_random_words_file.close();
+    all_possible_guess_words_file.close();
 }
 
-std::string pick_random_word(const std::vector<std::string>& all_possible_words)
+std::string pick_random_word(const std::vector<std::string>& all_possible_random_words)
 {
     std::mt19937 rd(static_cast<unsigned>(std::time(nullptr)));
-    std::uniform_int_distribution<std::size_t> dist(0, all_possible_words.size() - 1);
-    std::string random_word = all_possible_words[dist(rd)];
+    std::uniform_int_distribution<std::size_t> dist(0, all_possible_random_words.size() - 1);
+    std::string random_word = all_possible_random_words[dist(rd)];
     return random_word;
 }
 
@@ -55,7 +62,7 @@ void initialize_input(char(&input)[6])
 void initialize_wordle_game(char(&input)[6])
 {
     initialize_input(input);
-    wordle_word = pick_random_word(all_possible_words);
+    wordle_word = pick_random_word(all_possible_random_words);
     for (char c = 'A'; c <= 'Z'; c++) {
         wordle_letter_state_map[c] = Letter_State::Unchecked;
     }
@@ -107,7 +114,7 @@ bool handle_input(int clicked_key)
 
         std::string inputted_guess_string(input);
 
-        if (std::find(all_possible_words.begin(), all_possible_words.end(), inputted_guess_string) == all_possible_words.end()) { // input is not in the list
+        if (std::find(all_possible_guess_words.begin(), all_possible_guess_words.end(), inputted_guess_string) == all_possible_guess_words.end()) { // input is not in the list
             std::cout << "INVALID ENTER: input is not a valid word\n";
             std::string inputted_guess_string(input);
             std::cout << "Current Input: " << inputted_guess_string << '\n';

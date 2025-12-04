@@ -131,11 +131,12 @@
     <ClCompile Include="screens.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="words.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="game.h" />
     <ClInclude Include="screens.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="words\possible_guess_word_word_bank.txt" />
+    <Text Include="words\random_word_word_bank.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

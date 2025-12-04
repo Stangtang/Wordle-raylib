@@ -10,7 +10,7 @@ int main()
     std::stack<Screen> screen_stack;
     screen_stack.push(start);
 
-    import_words(all_possible_words);
+    import_words(all_possible_random_words, all_possible_guess_words);
 
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {

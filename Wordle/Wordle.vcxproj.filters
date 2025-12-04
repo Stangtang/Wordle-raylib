@@ -26,16 +26,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="words.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="screens.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="words\random_word_word_bank.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="words\possible_guess_word_word_bank.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
